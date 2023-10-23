@@ -12,7 +12,7 @@ module.exports = async(interaction) => {
           //  embeds: [embed]
        // });
 
-       await channel.send(`<@${interaction.user.id}> has left the discord`)
+       await channel.send(`<@${interaction.user.id}> (${interaction.user.id}) has left the discord`)
 
     
     })
