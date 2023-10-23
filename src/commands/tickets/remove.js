@@ -3,15 +3,15 @@ const { CommandType } = require("wokcommands");
 
 module.exports = {
     category: 'Tickets',
-    name: 'add',
-    description: 'Adds a user to the ticket',
+    name: 'remove',
+    description: 'Removes a user from the ticket',
     testOnly: true,
     ownerOnly: true,
     type: CommandType.SLASH,
     options: [
         {
             name: 'user',
-            description: 'The user to add to the ticket',
+            description: 'The user to remove from the ticket',
             required: true,
             type: ApplicationCommandOptionType.User
         }
@@ -23,24 +23,24 @@ module.exports = {
 
         const success = new EmbedBuilder()
         .setColor('Green')
-        .setDescription(`<@${auser.user.id}> has been added to the ticket!`)
+        .setDescription(`<@${auser.user.id}> has been removed from the ticket!`)
         .setTimestamp()
 
         if (!interaction.member.roles.cache.has('1163568384559042642')) {
 
             interaction.reply({
-                content: 'You do not have permission to add people to tickets',
+                content: 'You do not have permission to remove people from tickets',
                 ephemeral: true
             })
 
         } else {
 
                 await interaction.channel.permissionOverwrites.edit(auser.user.id,{
-                    ViewChannel: true,
-                    ReadMessageHistory: true,
-                    EmbedLinks: true,
-                    AttachFiles: true,
-                    SendMessages: true
+                    ViewChannel: false,
+                    ReadMessageHistory: false,
+                    EmbedLinks: false,
+                    AttachFiles: false,
+                    SendMessages: false
                 })
 
                 let msg = MessagePayload.create(interaction.channel, {
