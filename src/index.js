@@ -22,6 +22,8 @@ module.exports = { client }
 client.on('ready', async () => {
     console.log('The bot is online')
 
+    client.user.setActivity({name: `over everyone 😈`, type: ActivityType.Watching})
+
     new CH({
         client,
         commandsDir: path.join(__dirname, 'commands'),
