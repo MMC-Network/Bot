@@ -62,16 +62,8 @@ module.exports = async (interaction) => {
 
 
 
-                const transcriptButton = new ButtonBuilder()
-                    .setCustomId('transcript')
-                    .setEmoji('📜')
-                    .setLabel('Transcript')
-                    .setStyle(ButtonStyle.Secondary)
-
-
-
                 const row1 = new ActionRowBuilder()
-                    .addComponents(reopenButton, transcriptButton, deleteButton)
+                    .addComponents(reopenButton, deleteButton)
 
                 const closedEmbed = new EmbedBuilder()
                     .setColor('Red')
@@ -135,56 +127,6 @@ module.exports = async (interaction) => {
 
         }
 
-        if (interaction.customId === 'transcript') {
-
-            if (!interaction.member.roles.cache.has('1163568384559042642')) {
-
-                interaction.reply({
-                    content: 'You do not have permission to save transcripts',
-                    ephemeral: true
-                })
-
-            } else {
-
-                await interaction.deferUpdate()
-
-            const attachment = await transcripts.createTranscript(interaction.channel, {
-                limit: 10000,
-                returnType: 'attachment',
-                fileName: `${interaction.channel.name}.html`,
-                saveImages: true
-            });
-
-            let tchannel = interaction.guild.channels.cache.find(c => c.id === '1163904701234942062')
-
-            let tembed = new EmbedBuilder()
-            .setColor('Yellow')
-            .setTitle('Transcript Saved')
-            .setDescription(`The ticket transcript has been saved by <@${interaction.user.id}> (${interaction.user.tag})`)
-
-            let tmsg = MessagePayload.create(interaction.channel, {
-                embeds: [tembed]
-            })
-
-            await interaction.channel.send(tmsg)
-
-            let savedEmbed = new EmbedBuilder()
-            .setColor('Green')
-            .setTitle('New Transcript')
-            .setDescription(`Ticket transcript for ${interaction.channel.name}. Ticket closed by ${interaction.user.tag}`)
-            .setTimestamp()
-
-            let transcriptmsg = MessagePayload.create(tchannel, {
-                embeds: [savedEmbed],
-                files: [attachment]
-            })
-
-            await tchannel.send(transcriptmsg)
-        }
-
-            
-
-        }
 
         if (interaction.customId === 'delete') {
 
@@ -196,6 +138,39 @@ module.exports = async (interaction) => {
                 })
 
             } else {
+
+                const attachment = await transcripts.createTranscript(interaction.channel, {
+                    limit: 10000,
+                    returnType: 'attachment',
+                    fileName: `${interaction.channel.name}.html`,
+                    saveImages: true
+                });
+    
+                let tchannel = interaction.guild.channels.cache.find(c => c.id === '1163904701234942062')
+    
+                let tembed = new EmbedBuilder()
+                .setColor('Yellow')
+                .setTitle('Transcript Saved')
+                .setDescription(`The ticket transcript has been saved by <@${interaction.user.id}> (${interaction.user.tag})`)
+    
+                let tmsg = MessagePayload.create(interaction.channel, {
+                    embeds: [tembed]
+                })
+    
+                await interaction.channel.send(tmsg)
+    
+                let savedEmbed = new EmbedBuilder()
+                .setColor('Green')
+                .setTitle('New Transcript')
+                .setDescription(`Ticket transcript for ${interaction.channel.name}. Ticket closed by ${interaction.user.tag}`)
+                .setTimestamp()
+    
+                let transcriptmsg = MessagePayload.create(tchannel, {
+                    embeds: [savedEmbed],
+                    files: [attachment]
+                })
+    
+                await tchannel.send(transcriptmsg)
 
                 const deleting = new EmbedBuilder()
                     .setColor('Yellow')
