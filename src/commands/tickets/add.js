@@ -18,13 +18,12 @@ module.exports = {
     ],
     callback: async ({interaction, client}) => {
 
-        const user = interaction.options.getUser('user')
-        const userid = user.id
+        const auser = interaction.options.getMember('user')
         
 
         const success = new EmbedBuilder()
         .setColor('Green')
-        .setDescription(`<@${user.id}> has been added to the ticket!`)
+        .setDescription(`<@${auser.user.id}> has been added to the ticket!`)
         .setTimestamp()
 
         if (!interaction.member.roles.cache.has('1163568384559042642')) {
@@ -36,13 +35,13 @@ module.exports = {
 
         } else {
 
-                await interaction.channel.permissionOverwrites.edit([
-                    {
-                        id: userid.member.id,
-                        allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
-                    }
-
-                ])
+                await interaction.channel.permissionOverwrites.edit(auser.user.id,{
+                    ViewChannel: true,
+                    ReadMessageHistory: true,
+                    EmbedLinks: true,
+                    AttachFiles: true,
+                    SendMessages: true
+                })
 
                 let msg = MessagePayload.create(interaction.channel, {
                     embeds: [success]
