@@ -58,7 +58,7 @@ module.exports = async (interaction) => {
                     .setCustomId('delete')
                     .setEmoji('🗑️')
                     .setLabel('Delete')
-                    .setStyle(ButtonStyle.Secondary)
+                    .setStyle(ButtonStyle.Danger)
 
 
 
@@ -81,8 +81,6 @@ module.exports = async (interaction) => {
                 })
 
                 interaction.channel.send(closedMsg)
-
-
 
 
 
@@ -124,6 +122,29 @@ module.exports = async (interaction) => {
             })
 
             await interaction.channel.send(closedMsg)
+
+        }
+
+        if(interaction.customId === 'claim') {
+
+            if(!interaction.member.roles.cache.has('1163568384559042642')) {
+                interaction.reply({
+                    content: 'You do not have permission to claim tickets',
+                    ephemeral: true
+                })
+            } else {
+                interaction.deferUpdate()
+                const success = new EmbedBuilder()
+            .setColor('Green')
+            .setDescription(`This ticket has been successfully claimed by <@${interaction.user.id}>`)
+
+            let logMsg = MessagePayload.create(interaction.channel, {
+                embeds: [success]
+            })
+
+            await interaction.channel.setName(`${interaction.user.tag}-doing`).then(interaction.channel.send(logMsg))
+            }
+            
 
         }
 

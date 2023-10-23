@@ -42,8 +42,14 @@ module.exports = async (instance, message) => {
                 .setLabel('Close')
                 .setStyle(ButtonStyle.Danger)
 
+                const claimButton = new ButtonBuilder()
+                .setCustomId('claim')
+                .setEmoji('🤚🏻')
+                .setLabel('Claim')
+                .setStyle(ButtonStyle.Primary)
+
                 const row1 = new ActionRowBuilder()
-                .addComponents(closeButton)
+                .addComponents(closeButton, claimButton)
 
                 let msg = MessagePayload.create(channel, {
                     embeds: [genSupOpened],
