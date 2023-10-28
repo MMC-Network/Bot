@@ -1,5 +1,13 @@
-const { ButtonBuilder, EmbedBuilder, MessagePayload, ActionRowBuilder, ButtonStyle } = require("discord.js")
-const { CommandType } = require("wokcommands");
+const {
+    ButtonBuilder,
+    EmbedBuilder,
+    MessagePayload,
+    ActionRowBuilder,
+    ButtonStyle
+} = require("discord.js")
+const {
+    CommandType
+} = require("wokcommands");
 module.exports = {
     category: 'Moderation',
     name: 'clear',
@@ -9,7 +17,11 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: '[amount]',
 
-    callback: async ({interaction, client, args}) => {
+    callback: async ({
+        interaction,
+        client,
+        args
+    }) => {
 
         if (!interaction.member.roles.cache.has('1163568181399535688')) {
 
@@ -23,13 +35,15 @@ module.exports = {
             const amount = args.length ? parseInt(args.shift()) : 10;
 
             const success = new EmbedBuilder()
-            .setTitle("Messages cleared")
-            .setDescription(`<:greentick:1116854720515018824> Deleted ${amount} messages from <#${interaction.channel.id}>`)
-            .setThumbnail(interaction.guild.iconURL())
-            .setTimestamp()
-            .setColor('#1df028')
+                .setTitle("Messages cleared")
+                .setDescription(`<:greentick:1116854720515018824> Deleted ${amount} messages from <#${interaction.channel.id}>`)
+                .setThumbnail(interaction.guild.iconURL())
+                .setTimestamp()
+                .setColor('#1df028')
 
-            const { size } = await interaction.channel.bulkDelete(amount, true)
+            const {
+                size
+            } = await interaction.channel.bulkDelete(amount, true)
 
             return {
                 embeds: [success],

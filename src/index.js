@@ -1,7 +1,14 @@
-const { Client, IntentsBitField, GatewayIntentBits, ActivityType } = require('discord.js');
+const {
+    Client,
+    IntentsBitField,
+    GatewayIntentBits,
+    ActivityType
+} = require('discord.js');
 const CH = require('wokcommands');
 const path = require('path');
-const { type } = require('os');
+const {
+    type
+} = require('os');
 
 const client = new Client({
     intents: [
@@ -17,12 +24,17 @@ const client = new Client({
     ]
 });
 
-module.exports = { client }
+module.exports = {
+    client
+}
 
 client.on('ready', async () => {
     console.log('The bot is online')
 
-    client.user.setActivity({name: `over everyone 😈`, type: ActivityType.Watching})
+    client.user.setActivity({
+        name: `over everyone 😈`,
+        type: ActivityType.Watching
+    })
 
     new CH({
         client,

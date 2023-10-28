@@ -1,5 +1,13 @@
-const {EmbedBuilder, MessagePayload, ButtonBuilder, ButtonStyle, ActionRowBuilder} = require('discord.js');
-const { CommandType } = require("wokcommands");
+const {
+    EmbedBuilder,
+    MessagePayload,
+    ButtonBuilder,
+    ButtonStyle,
+    ActionRowBuilder
+} = require('discord.js');
+const {
+    CommandType
+} = require("wokcommands");
 module.exports = {
     category: 'Administration',
     name: 'restart',
@@ -7,22 +15,28 @@ module.exports = {
     type: CommandType.SLASH,
     testOnly: true,
     ownerOnly: true,
-    
-    
-    callback: async ({interaction, client}) => {
+
+
+    callback: async ({
+        interaction,
+        client
+    }) => {
 
         const embed = new EmbedBuilder()
-        .setColor('Green')
-        .setDescription('The bot is being restarted')
-        .setTimestamp()
+            .setColor('Green')
+            .setDescription('The bot is being restarted')
+            .setTimestamp()
 
         let msg = MessagePayload.create(interaction.channel, {
             embeds: [embed]
         })
 
-        
 
-        await interaction.reply({embeds: [embed], ephemeral: true})
+
+        await interaction.reply({
+            embeds: [embed],
+            ephemeral: true
+        })
         await process.exit()
 
     },

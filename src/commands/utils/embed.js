@@ -1,13 +1,22 @@
-const { ButtonBuilder, EmbedBuilder, MessagePayload, ActionRowBuilder, ButtonStyle, ApplicationCommandType, ApplicationCommandOptionType } = require("discord.js")
-const { CommandType } = require("wokcommands");
+const {
+    ButtonBuilder,
+    EmbedBuilder,
+    MessagePayload,
+    ActionRowBuilder,
+    ButtonStyle,
+    ApplicationCommandType,
+    ApplicationCommandOptionType
+} = require("discord.js")
+const {
+    CommandType
+} = require("wokcommands");
 module.exports = {
     category: 'Utils',
     name: 'embed',
     description: 'Build an embed to send to a specified channel',
     testOnly: true,
     type: CommandType.SLASH,
-    options: [
-        {
+    options: [{
             name: 'channel',
             description: 'The channel to send the embed to',
             required: true,
@@ -43,10 +52,13 @@ module.exports = {
             required: false,
             type: ApplicationCommandOptionType.String
         },
-    
+
     ],
 
-    callback: async ({interaction, client}) => {
+    callback: async ({
+        interaction,
+        client
+    }) => {
 
         const channel = interaction.options.getChannel('channel')
         const title = interaction.options.getString('title')
@@ -55,32 +67,42 @@ module.exports = {
         const colour = interaction.options.getString('colour')
         const thumbnail = interaction.options.getString('thumbnail')
 
-        
-
-       if(!interaction.member.roles.cache.has('1165680295547261130')) {
-        interaction.reply({content: 'You do not have permission to run this command', ephemeral: true})
-
-       } else {
-        try {
-            const embed = new EmbedBuilder()
-            .setTitle(title)
-            .setDescription(description)
-            .setImage({url: image})
-            .setThumbnail({url: thumbnail})
-            .setColor(colour)
-
-        let msg = MessagePayload.create(channel, {
-            embeds: [embed]
-        })
-        await channel.send(msg)
 
 
-        } catch (e) {
-            interaction.reply({content: `An error occured: ${e}`, ephemeral: true})
-            console.log(e)
+        if (!interaction.member.roles.cache.has('1165680295547261130')) {
+            interaction.reply({
+                content: 'You do not have permission to run this command',
+                ephemeral: true
+            })
 
+        } else {
+            try {
+                const embed = new EmbedBuilder()
+                    .setTitle(title)
+                    .setDescription(description)
+                    .setImage({
+                        url: image
+                    })
+                    .setThumbnail({
+                        url: thumbnail
+                    })
+                    .setColor(colour)
+
+                let msg = MessagePayload.create(channel, {
+                    embeds: [embed]
+                })
+                await channel.send(msg)
+
+
+            } catch (e) {
+                interaction.reply({
+                    content: `An error occured: ${e}`,
+                    ephemeral: true
+                })
+                console.log(e)
+
+            }
         }
-       }
 
     }
 }

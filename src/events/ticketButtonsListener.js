@@ -29,8 +29,7 @@ module.exports = async (interaction) => {
             } else {
 
 
-                interaction.channel.permissionOverwrites.set([
-                    {
+                interaction.channel.permissionOverwrites.set([{
                         id: interaction.guild.roles.everyone,
                         deny: [PermissionsBitField.Flags.ViewChannel]
                     },
@@ -94,18 +93,18 @@ module.exports = async (interaction) => {
             await interaction.deferUpdate()
 
             interaction.channel.permissionOverwrites.set([{
-                id: interaction.guild.roles.everyone,
-                deny: [PermissionsBitField.Flags.ViewChannel]
-            },
-            {
-                id: interaction.channel.topic,
-                allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.SendMessages],
-            },
-            {
-                id: '1163568384559042642',
-                allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
-            }
-        ])
+                    id: interaction.guild.roles.everyone,
+                    deny: [PermissionsBitField.Flags.ViewChannel]
+                },
+                {
+                    id: interaction.channel.topic,
+                    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.SendMessages],
+                },
+                {
+                    id: '1163568384559042642',
+                    allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
+                }
+            ])
 
             const reopenedEmbed = new EmbedBuilder()
                 .setColor('Orange')
@@ -125,9 +124,9 @@ module.exports = async (interaction) => {
 
         }
 
-        if(interaction.customId === 'claim') {
+        if (interaction.customId === 'claim') {
 
-            if(!interaction.member.roles.cache.has('1163568384559042642')) {
+            if (!interaction.member.roles.cache.has('1163568384559042642')) {
                 interaction.reply({
                     content: 'You do not have permission to claim tickets',
                     ephemeral: true
@@ -135,16 +134,16 @@ module.exports = async (interaction) => {
             } else {
                 interaction.deferUpdate()
                 const success = new EmbedBuilder()
-            .setColor('Green')
-            .setDescription(`This ticket has been successfully claimed by <@${interaction.user.id}>`)
+                    .setColor('Green')
+                    .setDescription(`This ticket has been successfully claimed by <@${interaction.user.id}>`)
 
-            let logMsg = MessagePayload.create(interaction.channel, {
-                embeds: [success]
-            })
+                let logMsg = MessagePayload.create(interaction.channel, {
+                    embeds: [success]
+                })
 
-            await interaction.channel.setName(`${interaction.user.tag}-doing`).then(interaction.channel.send(logMsg))
+                await interaction.channel.setName(`${interaction.user.tag}-doing`).then(interaction.channel.send(logMsg))
             }
-            
+
 
         }
 
@@ -166,31 +165,31 @@ module.exports = async (interaction) => {
                     fileName: `${interaction.channel.name}.html`,
                     saveImages: true
                 });
-    
+
                 let tchannel = interaction.guild.channels.cache.find(c => c.id === '1163904701234942062')
-    
+
                 let tembed = new EmbedBuilder()
-                .setColor('Yellow')
-                .setTitle('Transcript Saved')
-                .setDescription(`The ticket transcript has been saved by <@${interaction.user.id}> (${interaction.user.tag})`)
-    
+                    .setColor('Yellow')
+                    .setTitle('Transcript Saved')
+                    .setDescription(`The ticket transcript has been saved by <@${interaction.user.id}> (${interaction.user.tag})`)
+
                 let tmsg = MessagePayload.create(interaction.channel, {
                     embeds: [tembed]
                 })
-    
+
                 await interaction.channel.send(tmsg)
-    
+
                 let savedEmbed = new EmbedBuilder()
-                .setColor('Green')
-                .setTitle('New Transcript')
-                .setDescription(`Ticket transcript for ${interaction.channel.name}. Ticket closed by ${interaction.user.tag}`)
-                .setTimestamp()
-    
+                    .setColor('Green')
+                    .setTitle('New Transcript')
+                    .setDescription(`Ticket transcript for ${interaction.channel.name}. Ticket closed by ${interaction.user.tag}`)
+                    .setTimestamp()
+
                 let transcriptmsg = MessagePayload.create(tchannel, {
                     embeds: [savedEmbed],
                     files: [attachment]
                 })
-    
+
                 await tchannel.send(transcriptmsg)
 
                 const deleting = new EmbedBuilder()
