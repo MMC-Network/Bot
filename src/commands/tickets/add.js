@@ -6,7 +6,6 @@ module.exports = {
     name: 'add',
     description: 'Adds a user to the ticket',
     testOnly: true,
-    ownerOnly: true,
     type: CommandType.SLASH,
     options: [
         {

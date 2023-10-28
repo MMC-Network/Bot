@@ -6,7 +6,6 @@ module.exports = {
     name: 'remove',
     description: 'Removes a user from the ticket',
     testOnly: true,
-    ownerOnly: true,
     type: CommandType.SLASH,
     options: [
         {
