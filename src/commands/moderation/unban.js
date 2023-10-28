@@ -64,7 +64,7 @@ module.exports = {
             let successMsg = MessagePayload.create(interaction.channel, {
                 embeds: [success]
             })
-            if (!interaction.member.roles.cache.has('1163568181399535688')) {
+            if (!interaction.member.roles.cache.has('1163568046443602000')) {
 
                 interaction.reply({
                     content: 'You do not have permission to unban users',
