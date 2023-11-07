@@ -7,7 +7,6 @@ const {
 const {
     CommandType
 } = require("wokcommands");
-
 module.exports = {
     category: 'Tickets',
     name: 'add',
@@ -33,7 +32,7 @@ module.exports = {
             .setDescription(`<@${auser.user.id}> has been added to the ticket!`)
             .setTimestamp()
 
-        if (!interaction.member.roles.cache.has('1163568384559042642')) {
+        if (!interaction.member.roles.cache.has('1163568181399535688')) {
 
             interaction.reply({
                 content: 'You do not have permission to add people to tickets',

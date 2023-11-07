@@ -19,7 +19,7 @@ module.exports = async (interaction) => {
 
         if (interaction.customId === 'close') {
 
-            if (!interaction.member.roles.cache.has('1163568384559042642')) {
+            if (!interaction.member.roles.cache.has('1163568181399535688')) {
 
                 interaction.reply({
                     content: 'You do not have permission to close tickets',
@@ -39,7 +39,7 @@ module.exports = async (interaction) => {
                         deny: [PermissionsBitField.Flags.SendMessages]
                     },
                     {
-                        id: '1163568384559042642',
+                        id: '1163568181399535688',
                         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
                     }
                 ])
@@ -101,7 +101,7 @@ module.exports = async (interaction) => {
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.SendMessages],
                 },
                 {
-                    id: '1163568384559042642',
+                    id: '1163568181399535688',
                     allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
                 }
             ])
@@ -126,7 +126,7 @@ module.exports = async (interaction) => {
 
         if (interaction.customId === 'claim') {
 
-            if (!interaction.member.roles.cache.has('1163568384559042642')) {
+            if (!interaction.member.roles.cache.has('1163568181399535688')) {
                 interaction.reply({
                     content: 'You do not have permission to claim tickets',
                     ephemeral: true
@@ -150,7 +150,7 @@ module.exports = async (interaction) => {
 
         if (interaction.customId === 'delete') {
 
-            if (!interaction.member.roles.cache.has('1163568384559042642')) {
+            if (!interaction.member.roles.cache.has('1163568181399535688')) {
 
                 interaction.reply({
                     content: 'You do not have permission to delete tickets',

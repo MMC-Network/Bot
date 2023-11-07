@@ -12,7 +12,7 @@ module.exports = {
 
     callback: async ({interaction, client, msg}) => {
 
-        if (!interaction.member.roles.cache.has('1165331497423753248')) {
+        if (!interaction.member.roles.cache.has('1163568046443602000')) {
 
             interaction.reply({
                 content: 'You do not have permission to force delete tickets',

@@ -25,7 +25,7 @@ module.exports = {
 
 
         
-            if (interaction.member.guild.roles.cache.has('1165331497423753248')) {
+            if (interaction.member.guild.roles.cache.has('1163568046443602000')) {
 
                 let logMessage = MessagePayload.create(interaction.channel, {
                     embeds: [success]

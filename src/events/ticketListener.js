@@ -49,7 +49,7 @@ module.exports = async (instance, message) => {
                         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
                     },
                     {
-                        id: '1163568384559042642',
+                        id: '1163568181399535688',
                         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
                     },
                     {
@@ -84,7 +84,7 @@ module.exports = async (instance, message) => {
                 })
 
                 await channel.send(msg)
-                await channel.send(`<@${interaction.user.id}> <@&1163568384559042642>`)
+                await channel.send(`<@${interaction.user.id}> <@&1163568181399535688>`)
             })
         }
 
@@ -102,7 +102,7 @@ module.exports = async (instance, message) => {
                         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
                     },
                     {
-                        id: '1164968197599023164',
+                        id: '1163568046443602000',
                         allow: [PermissionsBitField.Flags.ViewChannel, PermissionsBitField.Flags.ReadMessageHistory, PermissionsBitField.Flags.EmbedLinks, PermissionsBitField.Flags.AttachFiles, PermissionsBitField.Flags.SendMessages]
                     },
                     {
@@ -137,7 +137,7 @@ module.exports = async (instance, message) => {
                 })
 
                 await channel.send(msg)
-                await channel.send(`<@${interaction.user.id}> <@&1163568384559042642>`)
+                await channel.send(`<@${interaction.user.id}> <@&1163568046443602000>`)
             })
         }
     })

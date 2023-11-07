@@ -33,7 +33,7 @@ module.exports = {
             .setDescription(`<@${auser.user.id}> has been removed from the ticket!`)
             .setTimestamp()
 
-        if (!interaction.member.roles.cache.has('1163568384559042642')) {
+        if (!interaction.member.roles.cache.has('1163568181399535688')) {
 
             interaction.reply({
                 content: 'You do not have permission to remove people from tickets',

@@ -99,7 +99,7 @@ module.exports = {
         let successMsg = MessagePayload.create(interaction.channel, {
             embeds: [success]
         })
-        if (!interaction.member.roles.cache.has('1163568046443602000')) {
+        if (!interaction.member.roles.cache.has('1171511000370004091')) {
 
             interaction.reply({
                 content: 'You do not have permission to ban users',
