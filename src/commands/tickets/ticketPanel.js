@@ -43,7 +43,7 @@ module.exports = {
             .setColor('Blue')
             .setTitle('Ticket Categories')
             .setThumbnail('https://images-ext-2.discordapp.net/external/tv3OhZWo84AjRHiCBH5iHzwCNHTGa08dRDdLjqGo_B8/%3Fsize%3D512/https/cdn.discordapp.com/icons/1026962943616753735/0bd564d21b75d97e0b82a0983d62608c.png?format=webp&quality=lossless')
-            .setDescription('🌟 Hey there! Having some trouble? \nOur support tickets are the best way to get in contact with the support team. A support ticket can be opened for any kind of issue. \n\n📩 » General Support \n🛒 » Purchase Support \n\n⏰ Our support team members handle tickets as quickly as they can. Unless it\'s urgent, please don\'t ping staff.')
+            .setDescription('🌟 Hey there! Having some trouble? \nOur support tickets are the best way to get in contact with the support team. A support ticket can be opened for any kind of issue. \n\n📩 » General Support \n\n⏰ Our support team members handle tickets as quickly as they can. Unless it\'s urgent, please don\'t ping staff.')
             .setFooter({
                 text: 'Ticket System'
             })
